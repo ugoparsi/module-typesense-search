@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!--
+SPDX-FileCopyrightText: 2026 Typesense Search contributors
+SPDX-License-Identifier: AFL-3.0
+-->
+<config>
+    <modules>
+        <Community_TypesenseSearch>
+            <active>true</active>
+            <codePool>community</codePool>
+            <depends>
+                <Mage_Catalog/>
+                <Mage_CatalogSearch/>
+                <Mage_CatalogInventory/>
+                <Mage_Index/>
+                <Maho_Queue/>
+            </depends>
+        </Community_TypesenseSearch>
+    </modules>
+</config>

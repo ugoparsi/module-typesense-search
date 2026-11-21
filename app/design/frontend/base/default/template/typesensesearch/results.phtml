@@ -1,0 +1,39 @@
+<?php
+
+/**
+ * SPDX-FileCopyrightText: 2026 Typesense Search contributors
+ * SPDX-License-Identifier: AFL-3.0
+ * @package Community_TypesenseSearch
+ */
+
+/** @var Community_TypesenseSearch_Block_Products $this */
+?>
+<div class="page-title">
+    <h1><?= $this->escapeHtml($this->__('Search results for "%s"', $this->getQueryText())) ?></h1>
+</div>
+<?php if ($this->getProducts() === []): ?>
+    <p><?= $this->__('Your search returns no results.') ?></p>
+<?php else: ?>
+    <ul class="products-grid">
+        <?php foreach ($this->getProducts() as $product): ?>
+            <li class="item">
+                <a href="<?= $this->escapeUrl($this->getProductUrl($product)) ?>" class="product-image">
+                    <img src="<?= $this->escapeUrl((string) $this->helper('catalog/image')->init($product, 'small_image')->resize(240)) ?>"
+                         alt="<?= $this->escapeHtml($product->getName()) ?>" width="240" height="240" loading="lazy">
+                </a>
+                <h2 class="product-name"><a href="<?= $this->escapeUrl($this->getProductUrl($product)) ?>"><?= $this->escapeHtml($product->getName()) ?></a></h2>
+                <?= $this->getPriceHtml($product, true, '-typesense-results') ?>
+            </li>
+        <?php endforeach ?>
+    </ul>
+<?php endif ?>
+<?php if ($this->getPage() > 1 || $this->hasNextPage()): ?>
+    <nav class="pager" aria-label="<?= $this->escapeHtml($this->__('Search result pages')) ?>">
+        <?php if ($this->getPage() > 1): ?>
+            <a rel="prev" href="<?= $this->escapeUrl($this->getPageUrl($this->getPage() - 1)) ?>"><?= $this->__('Previous') ?></a>
+        <?php endif ?>
+        <?php if ($this->hasNextPage()): ?>
+            <a rel="next" href="<?= $this->escapeUrl($this->getPageUrl($this->getPage() + 1)) ?>"><?= $this->__('Next') ?></a>
+        <?php endif ?>
+    </nav>
+<?php endif ?>

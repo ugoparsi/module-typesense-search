@@ -1,0 +1,11 @@
+{
+    "name": "ugoparsi/module-typesense-search",
+    "description": "Typesense product search for Maho",
+    "type": "maho-module",
+    "license": "OSL-3.0 AND AFL-3.0",
+    "require": {
+        "php": ">=8.5.1",
+        "mahocommerce/maho": "~27.1.0",
+        "typesense/typesense-php": "^6.0"
+    }
+}

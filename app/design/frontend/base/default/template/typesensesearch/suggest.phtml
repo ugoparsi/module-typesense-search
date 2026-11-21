@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * SPDX-FileCopyrightText: 2026 Typesense Search contributors
+ * SPDX-License-Identifier: AFL-3.0
+ * @package Community_TypesenseSearch
+ */
+
+/** @var Community_TypesenseSearch_Block_Products $this */
+?>
+<?php if ($this->getProducts() === []): ?>
+    <div class="no-results"><?= $this->__('Your search returns no results.') ?></div>
+<?php else: ?>
+    <div class="results-list">
+        <ul class="product-results">
+            <?php foreach ($this->getProducts() as $product): ?>
+                <li class="item">
+                    <a href="<?= $this->escapeUrl($this->getProductUrl($product)) ?>"><?= $this->escapeHtml($product->getName()) ?></a>
+                    <?= $this->getPriceHtml($product, true, '-typesense-suggest') ?>
+                </li>
+            <?php endforeach ?>
+        </ul>
+    </div>
+<?php endif ?>
