@@ -31,6 +31,8 @@ A rebuild prepares a new collection and switches the store view alias after ever
 
 The module changes the two public search URL methods on the catalog search helper. Check those methods when combining this module with another extension that replaces the helper.
 
+In the tested Maho 27.1 checkout, PHPStan reports seven type annotations in the core after it resolves the rewritten helper. The module's own files pass the analysis.
+
 ## Tests
 
 Install the package into an isolated Maho 27.1 checkout with its development dependencies. Select a synthetic SQLite database and run the package integration suite from that checkout.
